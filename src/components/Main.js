@@ -33,7 +33,7 @@ const Main = () => {
     SetSecFile(event.target.files[0]);
   };
   return (
-    <div className="m-2 p-2">
+    <div className="m-2 p-2 font-mono">
       {/* File Upload */}
       {/* FIrst FIle */}
       <div>
