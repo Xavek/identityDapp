@@ -37,6 +37,7 @@ const Header = () => {
           });
           const account = accounts[0];
           console.log(account);
+          localStorage.setItem("Wallet_addr", account);
           setMyAcc(true);
         } else {
           alert("Please Use Rinkeby Test Network");
@@ -45,6 +46,7 @@ const Header = () => {
     }
   };
 
+  useEffect(() => handleConnectClick);
   return (
     <div className="m-2 p-2 font-mono text-lg">
       <button

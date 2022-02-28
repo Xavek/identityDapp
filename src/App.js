@@ -42,7 +42,7 @@ function App() {
     <>
       <Header />
       <Main />
-      <h1 className="text-2xl">This is the Body Of the component</h1>
+      <h1 className="text-2xl">Here QR code would be Scanned.</h1>
     </>
   );
 }

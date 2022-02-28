@@ -1,5 +1,11 @@
 import React, { useState, useRef } from "react";
 import { create } from "ipfs-http-client";
+// import connectToContract from "../utils/Contract";
+import abi from "../utils/Identity.json";
+import { ethers } from "ethers";
+import QRCode from "qrcode";
+import Pictures from "./Pictures";
+
 /*
     [x] File Input Fields.
     [x] NAme Input Field.
@@ -8,20 +14,58 @@ import { create } from "ipfs-http-client";
     [x] btn functions.
  */
 const Main = () => {
+  const contractAddress = "0x07EA30d9efDeDE079710Cd1551aF07C460eFaaeA";
+  const contractABI = abi.abi;
+  // const connectContract = connectToContract(window.ethereum)
   const client = create("https://ipfs.infura.io:5001/api/v0");
   const [file, setFile] = useState("");
   const [secondFile, SetSecFile] = useState("");
+  const [qrImage, setQRImage] = useState("");
+  // const [isQRImage, setISQRImage] = useState(false);
   const refUserName = useRef(null);
+
+  const handleGenerateQRCode = async (event) => {
+    event.preventDefault();
+    console.log("I am Being Clicked.");
+    const userAddr = localStorage.getItem("Wallet_addr");
+    try {
+      const response = await QRCode.toDataURL(userAddr.toString());
+      setQRImage(response);
+    } catch (err) {
+      console.error(err);
+    }
+  };
   const handleFileUpload = async (event) => {
     event.preventDefault();
     const userName = refUserName.current.value;
     refUserName.current.value = "";
-    // window.location.reload();
+
     // handleit in try catch
-    const created = await client.add(file);
-    const created2 = await client.add(secondFile);
-    console.log(created);
-    document.location.reload();
+    try {
+      const created = await client.add(file);
+      const created2 = await client.add(secondFile);
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const identityContract = new ethers.Contract(
+        contractAddress,
+        contractABI,
+        signer
+      );
+      const addIdentity = await identityContract.addUserInfo(
+        userName,
+        created.path.toString(),
+        created2.path.toString()
+      );
+
+      await addIdentity.wait();
+    } catch (error) {
+      console.error(error);
+    } finally {
+    }
+
+    // const created = await client.add(file);
+    // const created2 = await client.add(secondFile);
+    // console.log(created);
   };
   // To retrieve the images
   // const url = `https://ipfs.infura.io/ipfs/${path}`
@@ -71,6 +115,23 @@ const Main = () => {
         >
           Upload
         </button>
+      </div>
+      <div>
+        <button
+          onClick={handleGenerateQRCode}
+          className="m-2 p-2 font-semibold bg-blue-600 text-teal-200"
+        >
+          Get QR code
+        </button>
+      </div>
+      <div>
+        {/* Here the QR code would be flashed. */}
+        {qrImage ? (
+          <a href={qrImage} download>
+            <img src={qrImage} alt="qrcode" />
+          </a>
+        ) : null}
+        <Pictures />
       </div>
     </div>
   );
