@@ -1,6 +1,8 @@
-### Decentralized Identity Management Application which stores User unique documents such as Passports, Covid Vaccine Certificates, etc, and Generates QR Code which can be Scanned and retrieve stored files.
+#### Decentralized Identity Management Application which stores User unique documents such as Passports, Covid Vaccine Certificates, etc, and Generates QR Code which can be Scanned and retrieve stored files.
 
-### User first connects with Metamask (auth) then can upload the files(pays gas fees) and gets back the Scannable QR Code. When Scanning the QR Code he gets the corresponding image/file stored in IPFS(Decentralized storage).
+### Application Flow
+
+#### The user first connects with Metamask (auth) then can upload the files(pays gas fees) and gets back the Scannable QR Code. When Scanning the QR Code he gets the corresponding image/file stored in IPFS(Decentralized storage).
 
 **Technologies Used**
 
