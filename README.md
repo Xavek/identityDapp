@@ -6,7 +6,7 @@
 
 **Technologies Used**
 
-- Solidity: Wrote Smart Contract which stores the User data as <structs> with corresponding mapping of (address=><structs>). User <structs> capable of storing <name>, <string>(IPFS file content HASH).
+- Solidity: Wrote Smart Contract which stores the User data as <structs> with corresponding mapping of (address=>structs). User <structs> capable of storing <name>, <string>(IPFS file content HASH).
 
 - Hardhat and Ethers.js: Used for developing(Hardhat) and Ethers js(connecting to React Frontend).
 
