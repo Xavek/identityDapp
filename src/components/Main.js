@@ -6,13 +6,6 @@ import { ethers } from "ethers";
 import QRCode from "qrcode";
 import Pictures from "./Pictures";
 
-/*
-    [x] File Input Fields.
-    [x] NAme Input Field.
-    [x] submit btn.
-    [x] file functions.
-    [x] btn functions.
- */
 const Main = () => {
   const contractAddress = "0x07EA30d9efDeDE079710Cd1551aF07C460eFaaeA";
   const contractABI = abi.abi;

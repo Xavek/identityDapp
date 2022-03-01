@@ -1,21 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-/*
-Function of this Componenet:
-It would be the btn which would be responsible for connecting with the MetaMask and ethereum state.
-For Simplicity it would connect with ethereum global object and would save the address in localStorage.
-
----------------------------------------------------------------------------------------------------------
-[x] Make Button with minimal styles
-[x] Add the Onclick function.
-[x] Check for the ethereum global object injected by MetaMask.
-[x] Request to connect with the Wallet.
-[x] Force the user to be on test-Net.
-[x] Chnage the state of the wallet btn after connected.
-[x] Add the User Addr to localStorage for simplicity.
-
- */
-
 const Header = () => {
   const [myAcc, setMyAcc] = useState(false);
 
