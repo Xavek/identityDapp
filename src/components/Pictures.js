@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { QrReader } from "react-qr-reader";
 import connectToContract from "../utils/Contract";
-
+// Clean all the meshups
 const Pictures = () => {
   const connectContract = connectToContract(window.ethereum);
   const [userAddrs, setUserAddr] = useState("");
