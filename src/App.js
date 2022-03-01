@@ -42,7 +42,6 @@ function App() {
     <>
       <Header />
       <Main />
-      <h1 className="text-2xl">Here QR code would be Scanned.</h1>
     </>
   );
 }
